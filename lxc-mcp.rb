@@ -1,9 +1,9 @@
 class LxcMcp < Formula
   desc "Professional MCP server for LXC/LXD container management - seamless AI integration with Warp Terminal"
   homepage "https://github.com/TB-Warp/lxc-mcp"
-  url "https://github.com/TB-Warp/lxc-mcp/archive/refs/heads/main.zip"
+  url "https://github.com/TB-Warp/lxc-mcp/archive/refs/tags/v1.0.1.tar.gz"
   version "1.0.1"
-  sha256 "fe1a741107e8b1496272370fb933f70e135fa9672a7b5a7accf48c4563d484d8"
+  sha256 "49b3815ce0a840d824942424adbbd554bbb70f052a50f9e827cb3e921afc030e"
   
   depends_on "node"
 
