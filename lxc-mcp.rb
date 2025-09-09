@@ -3,7 +3,7 @@ class LxcMcp < Formula
   homepage "https://github.com/TB-Warp/lxc-mcp"
   url "https://github.com/TB-Warp/lxc-mcp/archive/refs/heads/main.zip"
   version "1.0.1"
-  sha256 "" # Will be calculated automatically by brew
+  sha256 "fe1a741107e8b1496272370fb933f70e135fa9672a7b5a7accf48c4563d484d8"
   
   depends_on "node"
   depends_on "lxd" => :recommended
