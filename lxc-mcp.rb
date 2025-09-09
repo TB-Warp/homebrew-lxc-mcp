@@ -8,20 +8,28 @@ class LxcMcp < Formula
   depends_on "node"
 
   def install
-    # Install all dependencies (including dev deps for TypeScript build)
+    # Install all dependencies
     system "npm", "install"
     
     # Build TypeScript
     system "npm", "run", "build"
     
-    # Install to libexec to avoid conflicts
+    # Install to libexec
     libexec.install Dir["*"]
     
-    # Create wrapper scripts for both command names
-    (bin/"lxc-mcp").write_env_script("#{Formula["node"].opt_bin}/node", 
-                                     "#{libexec}/build/index.js")
-    (bin/"lxc-mcp-server").write_env_script("#{Formula["node"].opt_bin}/node", 
-                                           "#{libexec}/build/index.js")
+    # Create wrapper scripts
+    (bin/"lxc-mcp").write <<~EOS
+      #!/bin/bash
+      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/build/index.js" "$@"
+    EOS
+    
+    (bin/"lxc-mcp-server").write <<~EOS
+      #!/bin/bash
+      exec "#{Formula["node"].opt_bin}/node" "#{libexec}/build/index.js" "$@"
+    EOS
+    
+    chmod 0755, bin/"lxc-mcp"
+    chmod 0755, bin/"lxc-mcp-server"
   end
 
   def caveats
