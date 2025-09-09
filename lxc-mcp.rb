@@ -8,8 +8,8 @@ class LxcMcp < Formula
   depends_on "node"
 
   def install
-    # Install Node.js dependencies
-    system "npm", "install", "--production"
+    # Install all dependencies (including dev deps for TypeScript build)
+    system "npm", "install"
     
     # Build TypeScript
     system "npm", "run", "build"
