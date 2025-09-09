@@ -6,7 +6,6 @@ class LxcMcp < Formula
   sha256 "fe1a741107e8b1496272370fb933f70e135fa9672a7b5a7accf48c4563d484d8"
   
   depends_on "node"
-  depends_on "lxd" => :recommended
 
   def install
     # Install Node.js dependencies
@@ -29,13 +28,14 @@ class LxcMcp < Formula
     <<~EOS
       LXC MCP Server requires LXD to be installed and running:
         
-        # Install LXD if not already installed
-        brew install --cask lxd
+        # Install LXD on macOS:
+        # Visit https://lxd.io and download LXD for macOS
+        # Or install via multipass/lima for Linux containers
         
-        # Initialize LXD (if first time)
-        lxd init
+        # For testing with remote LXD server:
+        lxc remote add myserver <server-url>
         
-        # Verify LXD is running
+        # Verify LXD access
         lxc version
         
       To use with Warp AI, add to your MCP configuration:
